@@ -1,8 +1,8 @@
 import React from 'react'
 
-const GraphComponent = () => {
+const GraphComponent = ({test}) => {
   return (
-    <div>GraphComponent</div>
+    <div>GraphComponent {test} </div>
   )
 }
 

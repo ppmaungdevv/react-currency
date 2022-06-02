@@ -1,22 +1,13 @@
 import { useState } from 'react';
 import './App.css';
-import ConverterComponent from './components/ConverterComponent';
-import ExchangeListComponent from './components/ExchangeListComponent';
-import GraphComponent from './components/GraphComponent';
 import NavBar from './components/NavBar';
-
-const components = {
-  converter: ConverterComponent,
-  graph: GraphComponent,
-  list: ExchangeListComponent
-}
+import BaseComponent from './components/BaseComponent';
 
 function App() {
-  const [comp, set_comp] = useState(components.converter)
+  const [comp, set_comp] = useState('converter')
 
   const changeComponent = (comp_name) => {
-    set_comp(components[comp_name])
-    console.log('compname', comp_name)
+    set_comp(comp_name)
   }
 
   return (
@@ -27,11 +18,7 @@ function App() {
           React Kurrency
         </h2>
         <NavBar changeComponent={changeComponent} />
-        {comp} {/* there might be problem with props */}
-        {/* <{comp} /> */}
-        {/* <ConverterComponent />
-        <GraphComponent/>
-        <ExchangeListComponent/> */}
+        <BaseComponent comp={comp} />
       </div>
     </div>
   );
