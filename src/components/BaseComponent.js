@@ -12,6 +12,10 @@ const components = {
 export default function BaseComponent({comp}) {
     const DynamicComp = components[comp]
   return (
-    <DynamicComp test={comp} />
+    <div className='flex justify-center h-96 m-0 border-0'>
+      <div className='flex justify-center border-x border-b rounded-b border-emerald-600 w-full lg:w-2/3 bg-white'>
+       <DynamicComp test={comp} />
+      </div>
+    </div>
   )
 }
