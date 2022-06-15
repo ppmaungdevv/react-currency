@@ -51,6 +51,14 @@ const ExchangeListComponent = () => {
           </select>
         </div>
       </div>
+      <div className='flex place-content-center p-2 bg-red-500'>
+        <table className='bg-white w-2/3'>
+          <tr>
+            <td className='p-3'>United States Dollar</td>
+            <td className='p-3'>1</td>
+          </tr>
+        </table>
+      </div>
     </div>
   )
 }

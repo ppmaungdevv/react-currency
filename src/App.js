@@ -4,7 +4,7 @@ import NavBar from './components/NavBar';
 import BaseComponent from './components/BaseComponent';
 
 function App() {
-  const [comp, set_comp] = useState('converter')
+  const [comp, set_comp] = useState('list')
 
   const changeComponent = (comp_name) => {
     set_comp(comp_name)
