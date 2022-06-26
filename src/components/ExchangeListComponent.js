@@ -14,6 +14,7 @@ const ExchangeListComponent = () => {
   }, [])
 
   const [selected_base, setSelectedBase] = useState('MMK')
+  const [rates, setRates] = useState({})
   useEffect(() => {
     
     axios.get(`https://api.exchangerate.host/latest?base=${selected_base}`).then(({data}) => {
@@ -25,7 +26,10 @@ const ExchangeListComponent = () => {
     // }
   }, [selected_base])
   
-  const [rates, setRates] = useState({})
+  const rate_length = Object.keys(rates).length,
+  left_cell = 'px-5 py-3 w-3/5 border-t border-x text-left',
+  right_cell = 'px-5 py-3 w-2/5 border-t border-r text-right' 
+  // border-y
 
   return (
     <div className='w-full overflow-y-scroll'>
@@ -42,12 +46,12 @@ const ExchangeListComponent = () => {
         <table className='w-full md:w-3/5 border-separate' style={{borderSpacing: 0}}>
           <tbody>
             {
-              Object.keys(rates).map((key) => {
+              Object.keys(rates).map((key, index) => {
                 if (key !== selected_base) {
                   return (
                     <tr className='hover:bg-slate-100 hover:text-green-600 hover:cursor-default' key={key}>
-                      <td className='px-5 py-3 w-3/5 border-y border-x rounded-tl text-left'> {base_currency[key].description} </td>
-                      <td className='px-5 py-3 w-2/5 border-y border-r rounded-tr text-right'>{ rates[key] }</td>
+                      <td className={ `${left_cell} ${index === 0 ? ' rounded-tl' : ''} ${ index === rate_length - 1 ? 'border-b' : '' } ` }> { base_currency[key].description } </td>
+                      <td className={` ${right_cell} ${index === 0 ? 'rounded-tr' : ''} ${ index === rate_length - 1 ? 'border-b' : '' } `}>{ rates[key] }</td>
                     </tr>
                   )
                 }
